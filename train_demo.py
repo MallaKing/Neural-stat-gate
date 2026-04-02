@@ -3,7 +3,7 @@ import torch.nn as nn
 import torch.optim as optim
 import numpy as np
 import matplotlib.pyplot as plt
-from statsprojector import RobustStatisticalProjector
+from model import NeuralStatisticalGate
 
 def generate_data(batch_size=32, seq_len=1000):
     """
@@ -37,7 +37,7 @@ def generate_data(batch_size=32, seq_len=1000):
            torch.tensor(np.array(clean_batch), dtype=torch.float32)
 
 # --- Training Setup ---
-model = StatisticalGate(window_size=50)
+model = NeuralStatisticalGate(window_size=50)
 optimizer = optim.Adam(model.parameters(), lr=0.005)
 loss_fn = nn.MSELoss()
 
